@@ -3,8 +3,8 @@ import React from "react";
 const Footer = props => {
   return (
     <ul>
-      {props.addressInfo.map(info => (
-        <li>{info}</li>
+      {props.addressInfo.map((info, index) => (
+        <li key={index}>{info}</li>
       ))}
     </ul>
   );
