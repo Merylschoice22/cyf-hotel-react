@@ -4,9 +4,9 @@ import moment from "moment";
 const SearchResults = props => {
   console.log(props);
   const calculateNights = (firstDate, secondDate) => {
-    const checkIn = moment([firstDate.split("-")]);
-    console.log(firstDate.split("-"));
-    const checkOut = moment([secondDate.split("-")]);
+    const checkIn = moment(Date.parse(firstDate));
+    // console.log(Date.parse(firstDate));
+    const checkOut = moment(Date.parse(secondDate));
     return checkOut.diff(checkIn, "day");
   };
 
@@ -41,7 +41,6 @@ const SearchResults = props => {
               <td>{customer.checkOutDate}</td>
               <td>
                 {calculateNights(customer.checkInDate, customer.checkOutDate)}
-                {/* {customer.checkInDate.split("-")} */}
               </td>
             </tr>
           ))}
