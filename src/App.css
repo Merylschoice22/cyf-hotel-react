@@ -62,3 +62,13 @@ tr {
 .card {
   width: 18rem;
 }
+
+.li-text {
+  margin: 1em;
+}
+
+.pizza {
+  border-radius: 20px;
+  margin: 1em;
+  width: 15rem;
+}
