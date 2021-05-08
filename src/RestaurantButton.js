@@ -6,7 +6,7 @@ const RestaurantButton = props => {
       className="btn btn-primary"
       onClick={event => {
         props.order(event);
-        props.pizzas(event);
+        // props.pizzas(event);
       }}
     >
       Add
