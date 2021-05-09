@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchButton = props => {
   return (
-    <button className="btn btn-primary" onclick={props.onSearch}>
+    <button className="btn btn-primary" onClick={props.onSearch}>
       Search
     </button>
   );

@@ -3,13 +3,18 @@ import Order from "./Order";
 import "./App.css";
 
 const Restaurant = () => {
+  const orderTypes = ["Pizzas", "Salads", "Chocolate cakes", "Drinks"];
+
   return (
     <div>
       <h3>Restaurant Orders</h3>
       <ul>
-        <Order orderType="Pizzas" />
+        {orderTypes.map((orderType, index) => {
+          return <Order orderType={orderType} key={index} />;
+        })}
+        {/* <Order orderType="Pizzas" />
         <Order orderType="Salads" />
-        <Order orderType="Chocolate cake" />
+        <Order orderType="Chocolate cake" /> */}
       </ul>
     </div>
   );

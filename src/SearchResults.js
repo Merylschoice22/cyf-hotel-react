@@ -2,12 +2,18 @@ import React from "react";
 import moment from "moment";
 
 const SearchResults = props => {
-  console.log(props);
+  console.log("SearchResults print props", props);
   const calculateNights = (firstDate, secondDate) => {
-    const checkIn = moment(Date.parse(firstDate));
-    // console.log(Date.parse(firstDate));
-    const checkOut = moment(Date.parse(secondDate));
+    const checkIn = moment(firstDate);
+    const checkOut = moment(secondDate);
     return checkOut.diff(checkIn, "day");
+  };
+
+  // const [color, setColor] = useState([no-highlight, highlight]);
+  const highlightRow = () => {
+    console.log("Color");
+
+    // setColor(color)
   };
 
   //   if (props.results.length > 0) {
@@ -29,8 +35,12 @@ const SearchResults = props => {
         </thead>
         <tbody>
           {props.results.map((customer, index) => (
-            <tr key={index}>
-              {/* <th scope="row">{index}</th> */}
+            <tr
+              key={index}
+              // className={color}
+              onClick={highlightRow}
+            >
+              <th scope="row">{index}</th>
               <td>{customer.id}</td>
               <td>{customer.title}</td>
               <td>{customer.firstName}</td>

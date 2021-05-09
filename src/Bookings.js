@@ -1,19 +1,24 @@
-import React from "react";
-// import Search from "./Search.js";
+import React, { useState } from "react";
+import Search from "./Search.js";
 import SearchResults from "./SearchResults.js";
 import FakeBookings from "./data/fakeBookings.json";
 
 const Bookings = () => {
-  // let results = [];
-  // const search = (searchVal) => {
-  //   console.info("TO DO!", searchVal);
-  //   results = { FakeBookings };
-  // };
+  const search = searchVal => {
+    const guests = FakeBookings;
+    const filteredGuests = guests.filter(guest => {
+      return guest.firstName === searchVal;
+    });
+    setBookings(filteredGuests);
+  };
+
+  const [bookings, setBookings] = useState([]);
+  // const renderBookings = () => {};
 
   return (
     <div className="App-content">
       <div className="container">
-        {/* <Search search={search} /> */}
+        <Search search={search} />
         <SearchResults author="Kimberly" results={FakeBookings} />
       </div>
     </div>
