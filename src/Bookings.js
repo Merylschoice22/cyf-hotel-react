@@ -12,14 +12,14 @@ const Bookings = () => {
     setBookings(filteredGuests);
   };
 
-  const [bookings, setBookings] = useState([]);
+  const [bookings, setBookings] = useState(FakeBookings);
   // const renderBookings = () => {};
 
   return (
     <div className="App-content">
       <div className="container">
         <Search search={search} />
-        <SearchResults author="Kimberly" results={FakeBookings} />
+        <SearchResults author="Kimberly" results={bookings} />
       </div>
     </div>
   );

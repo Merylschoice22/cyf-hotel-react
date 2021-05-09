@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 
 const SearchResults = props => {
@@ -9,11 +9,18 @@ const SearchResults = props => {
     return checkOut.diff(checkIn, "day");
   };
 
-  // const [color, setColor] = useState([no-highlight, highlight]);
+  const [selectStatus, setSelectStatus] = useState(0);
   const highlightRow = () => {
-    console.log("Color");
-
-    // setColor(color)
+    console.log("Highlight row function", selectStatus);
+    const tr = document.getElementById("table-row");
+    if (selectStatus % 2 === 0) {
+      console.log("Highlight row");
+      tr.style.backgroundColor = "yellow";
+    } else {
+      console.log("Remove highlight");
+      tr.style.backgroundColor = "";
+    }
+    setSelectStatus(selectStatus + 1);
   };
 
   //   if (props.results.length > 0) {
@@ -37,7 +44,8 @@ const SearchResults = props => {
           {props.results.map((customer, index) => (
             <tr
               key={index}
-              // className={color}
+              id="table-row"
+              className={selectStatus}
               onClick={highlightRow}
             >
               <th scope="row">{index}</th>
