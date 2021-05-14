@@ -11,8 +11,7 @@ const SearchResults = props => {
 
   const [selectStatus, setSelectStatus] = useState(0);
   const highlightRow = () => {
-    console.log("Highlight row function", selectStatus);
-    const tr = document.getElementById("table-row");
+    const tr = document.querySelector("#table-row");
     if (selectStatus % 2 === 0) {
       console.log("Highlight row");
       tr.style.backgroundColor = "yellow";
@@ -29,6 +28,7 @@ const SearchResults = props => {
       <table className="table">
         <thead>
           <tr>
+            <th scope="col">BUTTON</th>
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">First Name</th>
@@ -48,7 +48,9 @@ const SearchResults = props => {
               className={selectStatus}
               onClick={highlightRow}
             >
-              <th scope="row">{index}</th>
+              <th scope="col">
+                <button onClick={highlightRow}>Select</button>
+              </th>
               <td>{customer.id}</td>
               <td>{customer.title}</td>
               <td>{customer.firstName}</td>
