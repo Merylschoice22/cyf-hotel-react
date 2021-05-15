@@ -29,6 +29,17 @@ const SearchResults = props => {
   };
 
   // DELAY MESSAGE
+  {
+    /* 
+   className={props.loading.toString()}
+   
+   <tr className={props.loading.toString()}>
+            LOADING CUSTOMER DATA . . .
+          </tr> 
+          
+          
+          */
+  }
 
   return (
     <div>
@@ -44,12 +55,10 @@ const SearchResults = props => {
             <th scope="col">Check-in Date</th>
             <th scope="col">Check-out Date</th>
             <th scope="col">Total nights</th>
+            <th scope="col" />
           </tr>
         </thead>
-        <tbody className={props.loading.toString()}>
-          {/* <tr className={props.loading.toString()}>
-            LOADING CUSTOMER DATA . . .
-          </tr> */}
+        <tbody>
           {props.results.map((customer, index) => (
             <tr key={index} className={selectStatus} onClick={highlightRow}>
               <td>{customer.id}</td>
@@ -72,7 +81,7 @@ const SearchResults = props => {
           ))}
         </tbody>
       </table>
-      <CustomerProfile id={profileID} />
+      {profileID && <CustomerProfile id={profileID} />}
     </div>
   );
 };

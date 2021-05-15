@@ -14,7 +14,7 @@ const Bookings = () => {
       } else if (bySurname === searchVal.toLowerCase()) {
         return bySurname;
       }
-      return filteredGuests;
+      // return filteredGuests;
     });
     setBookings(filteredGuests);
   };
