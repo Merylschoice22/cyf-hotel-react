@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
+import CustomerProfile from "./CustomerProfile";
 import "./App.css";
 
 const SearchResults = props => {
@@ -22,7 +23,10 @@ const SearchResults = props => {
     return checkOut.diff(checkIn, "days");
   };
 
-  //   if (props.results.length > 0) {
+  const [profileID, setProfileID] = useState("");
+  const handleProfileRequest = id => {
+    setProfileID(id);
+  };
   return (
     <div>
       <table className="table">
@@ -53,13 +57,18 @@ const SearchResults = props => {
               <td>
                 {calculateNights(customer.checkInDate, customer.checkOutDate)}
               </td>
+              <td>
+                <button onClick={handleProfileRequest(customer.id)}>
+                  Show profile
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <CustomerProfile id={profileID} />
     </div>
   );
-  //   }
 };
 
 export default SearchResults;

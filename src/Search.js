@@ -2,14 +2,6 @@ import React, { useState } from "react";
 import SearchButton from "./SearchButton";
 
 const Search = props => {
-  // const onSearch = (props) => {
-  //   // props.search(searchInput);
-  // };
-
-  // const customerName = () => {
-  //   console.log(document.getElementById("customerName").value);
-  // };
-
   const [searchInput, setSearchInput] = useState("");
   const handleSearchInput = event => {
     setSearchInput(event.target.value);
@@ -39,9 +31,7 @@ const Search = props => {
                 value={searchInput}
                 onChange={handleSearchInput}
               />
-              <SearchButton
-              // onSearch={onSearch}
-              />
+              <SearchButton />
             </div>
           </form>
         </div>
