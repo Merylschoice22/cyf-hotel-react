@@ -7,7 +7,14 @@ const Bookings = () => {
   const search = searchVal => {
     const guests = bookings;
     const filteredGuests = guests.filter(guest => {
-      return guest.firstName === searchVal;
+      let byName = guest.firstName.toLowerCase();
+      let bySurname = guest.surname.toLowerCase();
+      if (byName === searchVal.toLowerCase()) {
+        return byName;
+      } else if (bySurname === searchVal.toLowerCase()) {
+        return bySurname;
+      }
+      return filteredGuests;
     });
     setBookings(filteredGuests);
   };
