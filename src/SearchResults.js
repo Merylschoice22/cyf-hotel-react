@@ -27,6 +27,9 @@ const SearchResults = props => {
   const handleProfileRequest = id => {
     setProfileID(id);
   };
+
+  // DELAY MESSAGE
+
   return (
     <div>
       <table className="table">
@@ -43,7 +46,10 @@ const SearchResults = props => {
             <th scope="col">Total nights</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={props.loading.toString()}>
+          {/* <tr className={props.loading.toString()}>
+            LOADING CUSTOMER DATA . . .
+          </tr> */}
           {props.results.map((customer, index) => (
             <tr key={index} className={selectStatus} onClick={highlightRow}>
               <td>{customer.id}</td>

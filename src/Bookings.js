@@ -20,20 +20,22 @@ const Bookings = () => {
   };
 
   const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     console.log("Fetching bookings");
-    fetch("https://cyf-react.glitch.me")
+    fetch("https://cyf-react.glitch.me/delayed")
       .then(response => response.json())
       .then(data => {
         console.log(data);
         setBookings(data);
+        setLoading(false);
       });
   }, []);
   return (
     <div className="App-content">
       <div className="container">
         <Search search={search} />
-        <SearchResults author="Kimberly" results={bookings} />
+        <SearchResults author="Kimberly" results={bookings} loading={loading} />
       </div>
     </div>
   );
