@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import moment from "moment";
+import "./App.css";
 
 const SearchResults = props => {
-  console.log("SearchResults print props", props);
+  // HIGHLIGHT ROW WHEN SELECTED
+  const [selectStatus, setSelectStatus] = useState(0);
+  const highlightRow = () => {
+    if (selectStatus === "") {
+      console.log("Highlight row");
+      setSelectStatus("table-row");
+    } else {
+      console.log("Remove highlight");
+      setSelectStatus("");
+    }
+  };
+
+  // CALCULATE NIGHTS FUNCTION FOR TABLE
   const calculateNights = (firstDate, secondDate) => {
     const checkIn = moment(firstDate);
     const checkOut = moment(secondDate);
-    return checkOut.diff(checkIn, "day");
-  };
-
-  const [selectStatus, setSelectStatus] = useState(0);
-  const highlightRow = () => {
-    const tr = document.querySelector("#table-row");
-    if (selectStatus % 2 === 0) {
-      console.log("Highlight row");
-      tr.style.backgroundColor = "yellow";
-    } else {
-      console.log("Remove highlight");
-      tr.style.backgroundColor = "";
-    }
-    setSelectStatus(selectStatus + 1);
+    return checkOut.diff(checkIn, "days");
   };
 
   //   if (props.results.length > 0) {
@@ -28,7 +28,6 @@ const SearchResults = props => {
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">BUTTON</th>
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">First Name</th>
@@ -42,15 +41,7 @@ const SearchResults = props => {
         </thead>
         <tbody>
           {props.results.map((customer, index) => (
-            <tr
-              key={index}
-              id="table-row"
-              className={selectStatus}
-              onClick={highlightRow}
-            >
-              <th scope="col">
-                <button onClick={highlightRow}>Select</button>
-              </th>
+            <tr key={index} className={selectStatus} onClick={highlightRow}>
               <td>{customer.id}</td>
               <td>{customer.title}</td>
               <td>{customer.firstName}</td>
