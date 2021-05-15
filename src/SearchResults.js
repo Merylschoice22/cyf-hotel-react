@@ -58,7 +58,7 @@ const SearchResults = props => {
                 {calculateNights(customer.checkInDate, customer.checkOutDate)}
               </td>
               <td>
-                <button onClick={handleProfileRequest(customer.id)}>
+                <button onClick={() => handleProfileRequest(customer.id)}>
                   Show profile
                 </button>
               </td>
