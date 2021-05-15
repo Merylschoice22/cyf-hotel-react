@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchButton from "./SearchButton";
 
 const Search = props => {
-  const onSearch = props => {
-    props.search();
-  };
+  // const onSearch = props => {
+  //   props.search();
+  // };
 
-  const customerName = () => {
-    console.log(document.getElementById("customerName").value);
+  // const customerName = () => {
+  //   console.log(document.getElementById("customerName").value);
+  // };
+
+  const [searchInput, setSearchInput] = useState("");
+  const handleSearchInput = event => {
+    setSearchInput(event.target.value);
+    console.log(`Input value was: ${searchInput}`);
   };
 
   return (
@@ -25,9 +31,10 @@ const Search = props => {
               id="customerName"
               className="form-control"
               placeholder="Customer name"
-              onChange={customerName}
+              value={searchInput}
+              onChange={handleSearchInput}
             />
-            <SearchButton onSearch={onSearch} />
+            {/* <SearchButton onSearch={onSearch} /> */}
           </div>
           {/* </form> */}
         </div>
