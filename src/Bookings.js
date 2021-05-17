@@ -9,11 +9,11 @@ const Bookings = () => {
     const filteredGuests = guests.filter(guest => {
       let byName = guest.firstName.toLowerCase();
       let bySurname = guest.surname.toLowerCase();
-      if (byName === searchVal.toLowerCase()) {
-        return byName;
-      } else if (bySurname === searchVal.toLowerCase()) {
-        return bySurname;
-      }
+      return (
+        bySurname === searchVal.toLowerCase() ||
+        byName === searchVal.toLowerCase()
+      );
+
       // return filteredGuests;
     });
     setBookings(filteredGuests);
@@ -23,7 +23,7 @@ const Bookings = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     console.log("Fetching bookings");
-    fetch("https://cyf-react.glitch.me/delayed")
+    fetch("https://cyf-react.glitch.me/")
       .then(response => response.json())
       .then(data => {
         console.log(data);
