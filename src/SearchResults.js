@@ -9,19 +9,6 @@ const SearchResults = props => {
     setProfileID(id);
   };
 
-  // DELAY MESSAGE
-  {
-    /* 
-   className={props.loading.toString()}
-   
-   <tr className={props.loading.toString()}>
-            LOADING CUSTOMER DATA . . .
-          </tr> 
-          
-          
-          */
-  }
-
   return (
     <div>
       <table className="table">

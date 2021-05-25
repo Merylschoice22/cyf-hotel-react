@@ -25,7 +25,7 @@ const Bookings = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     console.log("Fetching bookings");
-    fetch("https://cyf-react.glitch.me/")
+    fetch("https://cyf-react.glitch.me/delayed")
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -38,7 +38,11 @@ const Bookings = () => {
     <div className="App-content">
       <div className="container">
         <Search search={search} />
-        <SearchResults author="Kimberly" results={bookings} loading={loading} />
+        {loading ? (
+          <h2> LOADING CUSTOMER DATA . . . </h2>
+        ) : (
+          <SearchResults author="Kimberly" results={bookings} />
+        )}
       </div>
     </div>
   );
