@@ -5,8 +5,9 @@ import SearchResults from "./SearchResults.js";
 
 const Bookings = () => {
   const search = searchVal => {
-    const guests = bookings;
-    const filteredGuests = guests.filter(guest => {
+    //reset bookings
+    // const guests = bookings;
+    const filteredGuests = fetchedBookings.filter(guest => {
       let byName = guest.firstName.toLowerCase();
       let bySurname = guest.surname.toLowerCase();
       return (
@@ -20,6 +21,7 @@ const Bookings = () => {
   };
 
   const [bookings, setBookings] = useState([]);
+  const [fetchedBookings, setFetchedBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     console.log("Fetching bookings");
@@ -28,6 +30,7 @@ const Bookings = () => {
       .then(data => {
         console.log(data);
         setBookings(data);
+        setFetchedBookings(data);
         setLoading(false);
       });
   }, []);

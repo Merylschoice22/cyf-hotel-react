@@ -9,7 +9,7 @@ const Search = props => {
   };
 
   const handleSubmit = event => {
-    props.search(searchInput); //or (event.target.value?)
+    props.search(searchInput);
     event.preventDefault();
   };
 
