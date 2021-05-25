@@ -39,7 +39,7 @@ const Bookings = () => {
       <div className="container">
         <Search search={search} />
         {loading ? (
-          <h2> LOADING CUSTOMER DATA . . . </h2>
+          <h2> LOADING CUSTOMER DATA . . . PLEASE WAIT</h2>
         ) : (
           <SearchResults author="Kimberly" results={bookings} />
         )}
