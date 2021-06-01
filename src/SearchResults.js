@@ -27,13 +27,17 @@ const SearchResults = props => {
           </tr>
         </thead>
         <tbody>
-          {props.results.map((customer, index) => (
-            <Customer
-              key={index}
-              customer={customer}
-              handleProfileRequest={handleProfileRequest}
-            />
-          ))}
+          {props.error ? (
+            <h2>{props.error}</h2>
+          ) : (
+            props.results.map((customer, index) => (
+              <Customer
+                key={index}
+                customer={customer}
+                handleProfileRequest={handleProfileRequest}
+              />
+            ))
+          )}
         </tbody>
       </table>
       {profileID && <CustomerProfile id={profileID} />}

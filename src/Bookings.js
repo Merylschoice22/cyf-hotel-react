@@ -23,15 +23,24 @@ const Bookings = () => {
   const [bookings, setBookings] = useState([]);
   const [fetchedBookings, setFetchedBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   useEffect(() => {
     console.log("Fetching bookings");
-    fetch("https://cyf-react.glitch.me/delayed")
+    fetch("https://cyf-react.glitch.me/error")
       .then(response => response.json())
       .then(data => {
+        if (data.error) {
+          setError(data.error);
+        }
+
         console.log(data);
         setBookings(data);
         setFetchedBookings(data);
         setLoading(false);
+      })
+      .catch(error => {
+        console.log(error);
+        setError(error);
       });
   }, []);
   return (
@@ -41,7 +50,7 @@ const Bookings = () => {
         {loading ? (
           <h2> LOADING CUSTOMER DATA . . . PLEASE WAIT</h2>
         ) : (
-          <SearchResults author="Kimberly" results={bookings} />
+          <SearchResults author="Kimberly" results={bookings} error={error} />
         )}
       </div>
     </div>
