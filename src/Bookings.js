@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Search from "./Search.js";
 import SearchResults from "./SearchResults.js";
-// import FakeBookings from "./data/fakeBookings.json";
+import FakeBookings from "./data/fakeBookings.json";
+import NewCustomerForm from "./NewCustomerForm.js";
 
 const Bookings = () => {
   const search = searchVal => {
@@ -26,7 +27,7 @@ const Bookings = () => {
   const [error, setError] = useState(null);
   useEffect(() => {
     console.log("Fetching bookings");
-    fetch("https://cyf-react.glitch.me/error")
+    fetch("https://cyf-react.glitch.me/")
       .then(response => response.json())
       .then(data => {
         if (data.error) {
@@ -50,8 +51,14 @@ const Bookings = () => {
         {loading ? (
           <h2> LOADING CUSTOMER DATA . . . PLEASE WAIT</h2>
         ) : (
-          <SearchResults author="Kimberly" results={bookings} error={error} />
+          <SearchResults
+            author="Kimberly"
+            results={bookings}
+            error={error}
+            FakeBookings={FakeBookings} // replace with input values
+          />
         )}
+        <NewCustomerForm />
       </div>
     </div>
   );

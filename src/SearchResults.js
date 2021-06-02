@@ -9,6 +9,23 @@ const SearchResults = props => {
     setProfileID(id);
   };
 
+  const sortID = () => {
+    const sortID = props.FakeBookings.sort((a, b) => {
+      const customerA = a.surname.toUpperCase();
+      const customerB = b.surname.toUpperCase();
+      if (customerA < customerB) {
+        return -1;
+      }
+      if (customerA > customerB) {
+        return 1;
+      }
+      return 0;
+    });
+    console.log(sortID);
+    return sortID;
+  };
+
+  sortID();
   return (
     <div>
       <table className="table">
@@ -38,6 +55,16 @@ const SearchResults = props => {
               />
             ))
           )}
+          {props.FakeBookings.map((
+            customer,
+            index //replace with input value
+          ) => (
+            <Customer
+              key={index}
+              customer={customer}
+              handleProfileRequest={handleProfileRequest}
+            />
+          ))}
         </tbody>
       </table>
       {profileID && <CustomerProfile id={profileID} />}
