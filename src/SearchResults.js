@@ -9,8 +9,20 @@ const SearchResults = props => {
     setProfileID(id);
   };
 
-  const sortID = () => {
-    const sortID = props.FakeBookings.sort((a, b) => {
+  const sortIDDesc = () => {
+    const sortID = props.FakeBookings.sort((a, b) => b.id - a.id);
+    console.log(sortID);
+    return sortID;
+  };
+
+  const sortIDAsc = () => {
+    const sortID = props.FakeBookings.sort((a, b) => a.id - b.id);
+    console.log(sortID);
+    return sortID;
+  };
+
+  const sortSurnameAZ = () => {
+    const sortSurname = props.FakeBookings.sort((a, b) => {
       const customerA = a.surname.toUpperCase();
       const customerB = b.surname.toUpperCase();
       if (customerA < customerB) {
@@ -21,11 +33,36 @@ const SearchResults = props => {
       }
       return 0;
     });
-    console.log(sortID);
-    return sortID;
+    console.log(sortSurname);
+    return sortSurname;
   };
 
-  sortID();
+  const sortSurnameZA = () => {
+    const sortSurname = props.FakeBookings.sort((a, b) => {
+      const customerA = a.surname.toUpperCase();
+      const customerB = b.surname.toUpperCase();
+      if (customerB < customerA) {
+        return -1;
+      }
+      if (customerB > customerA) {
+        return 1;
+      }
+      return 0;
+    });
+    console.log(sortSurname);
+    return sortSurname;
+  };
+
+  const [sortBy, setSortBy] = useState(sortSurnameAZ);
+  // sortIDAsc();
+  // sortIDDesc();
+  // sortSurnameAZ();
+  // sortSurnameZA();
+
+  // Created 4 functions - for sorting numbers and strings up and down. Works for ID, names, emails, and check in dates. Apply functions to renders will be () => {sortBy} Apply variables to functions to not repeat the code for each column clicked on.
+
+  //Click to select active and activate functionUp. Clicking again activates functionDown
+
   return (
     <div>
       <table className="table">
@@ -55,7 +92,7 @@ const SearchResults = props => {
               />
             ))
           )}
-          {props.FakeBookings.map((
+          {sortBy.map((
             customer,
             index //replace with input value
           ) => (
